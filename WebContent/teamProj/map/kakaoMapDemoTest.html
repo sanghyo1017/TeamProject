@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajax Get</title>
     <script type="text/javascript" src="jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c50f6c0f91e761205f077b489f5b2c52"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f0971904e58b24f325dcbc9cda3b8655"></script>
    <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c50f6c0f91e761205f077b489f5b2c52&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f0971904e58b24f325dcbc9cda3b8655&libraries=services,clusterer,drawing"></script>
     
     <script>
    
@@ -19,12 +19,13 @@
                });
             
             $('#btn').click(function(){
-                    var address = encodeURIComponent('../fireStation.xml');
+            	
+                    var address = encodeURIComponent('http://openapi.seoul.go.kr:8088/6c4d744372746a72313236744a785a54/json/bikeList/1/5/');
                         
                 $.ajax({
                     url : 'proxy.jsp?url='+address,
                     type :'GET',
-                    dataType : 'xml',
+                    dataType : 'json',
                     error : function(){
                         alert('error');
                     },
@@ -34,7 +35,7 @@
                        var b1=new Array();
                        var name1= new Array();
                         /* $("#sel").append(JSON.stringify(obj)); */
-                        var xmlObj = XML.stringify(obj);
+                        var jsonObj = JSON.stringify(obj);
                         msg +="</tr>";
                   msg +="</thead>";
                   msg +="<tbody>";
@@ -156,7 +157,7 @@
      </div>
    
     <div id="sel">
-   <div id="map" style="width:500px;height:400px;"></div>
+   <div id="map" style="width:1024px;height:800px;"></div>
     </div>
 </body>
 </html>
